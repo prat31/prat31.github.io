@@ -38,7 +38,7 @@ function lose(userChoice, computerChoice){
     computerScore_span.innerHTML = computerScore;
     const smallUserWord = "user".fontsize(3).sup();
     const smallCompWord = "comp".fontsize(3).sup();
-    result_p.innerHTML = convertToWord(userChoice)+smallUserWord  +" loses to "+ convertToWord(computerChoice) +smallCompWord + ". You lost!";
+    result_p.innerHTML = convertToWord(userChoice)+smallUserWord +" loses to "+ convertToWord(computerChoice) +smallCompWord + ". You lost!";
     const userChoice_div = document.getElementById(userChoice);
     userChoice_div.classList.add('red-glow');
     setTimeout(function(){ userChoice_div.classList.remove('red-glow')}, 300)
@@ -47,7 +47,7 @@ function lose(userChoice, computerChoice){
 function draw(userChoice, computerChoice){
     const smallUserWord = "user".fontsize(3).sup();
     const smallCompWord = "comp".fontsize(3).sup();
-    result_p.innerHTML = convertToWord(userChoice)+smallUserWord  +" equals "+ convertToWord(computerChoice) +smallCompWord + ". It's a draw!";
+    result_p.innerHTML = convertToWord(userChoice)+smallUserWord +" equals "+ convertToWord(computerChoice) +smallCompWord + ". It's a draw!";
     const userChoice_div = document.getElementById(userChoice);
     userChoice_div.classList.add('grey-glow');
     setTimeout(function(){ userChoice_div.classList.remove('grey-glow')}, 300)
