@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-white text-slate-900 dark:bg-terminal-dark dark:text-slate-100 font-sans transition-colors duration-200;
+  }
+}
