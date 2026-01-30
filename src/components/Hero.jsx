@@ -18,18 +18,20 @@ export function Hero() {
                         I build stuff.
                     </h2>
                     <p className="max-w-xl text-lg text-slate-600 dark:text-slate-400 mb-12 leading-relaxed">
-                        I'm a software engineer and tech enthusiast specializing in building exceptional digital experiences.
-                        Currently, I'm focused on accessible, human-centered products at <span className="text-terminal-blue">Stealth Mode</span>.
+                        I'm a backend engineer obsessed with building things that scale and breaking things to understand 
+                        how they work.<br></br>Coffee-fueled, code-driven, and perpetually curious about distributed systems, AI, 
+                        and whatever shiny new tech catches my attention.<br></br>When I'm not optimizing databases or debugging at 
+                        2 AM, I'm probably reading about the next big thing in software.
                     </p>
 
                     <div className="flex gap-4">
-                        <a href="#projects" className="px-6 py-3 border border-terminal-blue text-terminal-blue font-mono rounded hover:bg-terminal-blue/10 transition-colors">
+                        {/* <a href="#projects" className="px-6 py-3 border border-terminal-blue text-terminal-blue font-mono rounded hover:bg-terminal-blue/10 transition-colors">
                             Check out my work
-                        </a>
+                        </a> */}
                         <div className="flex items-center gap-4 ml-4">
                             <a href="https://github.com/prat31" target="_blank" rel="noopener noreferrer" className="p-2 hover:text-terminal-blue transition-colors"><Github className="w-6 h-6" /></a>
-                            <a href="#" className="p-2 hover:text-terminal-blue transition-colors"><Linkedin className="w-6 h-6" /></a>
-                            <a href="mailto:hello@example.com" className="p-2 hover:text-terminal-blue transition-colors"><Mail className="w-6 h-6" /></a>
+                            <a href="https://www.linkedin.com/in/prat31/" target="_blank" rel="noopener noreferrer" className="p-2 hover:text-terminal-blue transition-colors"><Linkedin className="w-6 h-6" /></a>
+                            <a href="mailto:pratcode07@gmail.com" className="p-2 hover:text-terminal-blue transition-colors"><Mail className="w-6 h-6" /></a>
                         </div>
                     </div>
                 </motion.div>

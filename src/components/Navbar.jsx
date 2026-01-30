@@ -37,7 +37,7 @@ export function Navbar() {
             <div className="container mx-auto px-6 flex items-center justify-between">
                 <a href="#" className="flex items-center gap-2 font-mono font-bold text-xl hover:opacity-80 transition-opacity">
                     <Terminal className="w-6 h-6 text-terminal-blue" />
-                    <span>&lt;Pratyush /&gt;</span>
+                    <span>&lt;prat31/&gt;</span>
                 </a>
 
                 <nav className="hidden md:flex items-center gap-8">

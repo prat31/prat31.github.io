@@ -1,18 +1,21 @@
 import { motion } from 'framer-motion';
-import { BookOpen, CheckCircle } from 'lucide-react';
+import { BookOpen, CheckCircle, Bookmark } from 'lucide-react';
 
 const currentlyReading = {
-    title: "The Pragmatic Programmer",
-    author: "Andrew Hunt & David Thomas",
-    progress: 65,
-    cover: "https://images-na.ssl-images-amazon.com/images/I/41as+WafrFL._SX396_BO1,204,203,200_.jpg" // Placeholder or color
+    title: "Designing Data-Intensive Applications",
+    author: "Martin Kleppmann",
+    progress: 15,
+    cover: "/images/designing-data-intensive-applications.png"
 };
 
 const readBooks = [
-    { title: "Clean Code", author: "Robert C. Martin", rating: 5 },
-    { title: "Sapiens", author: "Yuval Noah Harari", rating: 5 },
-    { title: "Project Hail Mary", author: "Andy Weir", rating: 4 },
-    { title: "Atomic Habits", author: "James Clear", rating: 5 },
+    { title: "Head First Design Patterns", author: "Eric Freeman, Elisabeth Robson", rating: 4, cover: "/images/head-first-design-patterns.png" },
+    { title: "Atomic Habits", author: "James Clear", rating: 5, cover: "/images/atomic-habits.png" },
+];
+
+const planningBooks = [
+    { title: "Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow", author: " Aurélien Géron", cover: "/images/hands-on-machine-learning.png" },
+    { title: "The Pragmatic Programmer", author: "Andrew Hunt, David Thomas", cover: "/images/the-pragmatic-programmer.png" },
 ];
 
 export function Bookshelf() {
@@ -37,9 +40,12 @@ export function Bookshelf() {
                                 <BookOpen className="w-5 h-5" /> Currently Reading
                             </h3>
                             <div className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700">
-                                <div className="aspect-[2/3] bg-slate-200 dark:bg-slate-700 mb-6 rounded flex items-center justify-center text-slate-400">
-                                    {/* In real app, use <img> here */}
-                                    <span className="text-xs font-mono">Book Cover</span>
+                                <div className="aspect-[2/3] bg-slate-200 dark:bg-slate-700 mb-6 rounded overflow-hidden shadow-sm">
+                                    <img
+                                        src={currentlyReading.cover}
+                                        alt={currentlyReading.title}
+                                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                                    />
                                 </div>
                                 <h4 className="text-xl font-bold mb-1">{currentlyReading.title}</h4>
                                 <p className="text-slate-500 text-sm mb-4">by {currentlyReading.author}</p>
@@ -55,14 +61,24 @@ export function Bookshelf() {
                         </div>
 
                         {/* Read List */}
-                        <div className="lg:col-span-2">
+                        <div className="lg:col-span-1">
                             <h3 className="font-mono text-terminal-green mb-6 flex items-center gap-2">
                                 <CheckCircle className="w-5 h-5" /> Recently Read
                             </h3>
-                            <div className="grid sm:grid-cols-2 ml-4 gap-4">
+                            <div className="space-y-4">
                                 {readBooks.map((book, i) => (
                                     <div key={i} className="flex items-start gap-4 p-4 rounded hover:bg-white dark:hover:bg-slate-800 transition-colors border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
-                                        <div className="w-12 h-16 bg-slate-200 dark:bg-slate-700 rounded flex-shrink-0"></div>
+                                        {book.cover ? (
+                                            <div className="w-12 h-16 rounded overflow-hidden shadow flex-shrink-0">
+                                                <img
+                                                    src={book.cover}
+                                                    alt={book.title}
+                                                    className="w-full h-full object-cover"
+                                                />
+                                            </div>
+                                        ) : (
+                                            <div className="w-12 h-16 bg-slate-200 dark:bg-slate-700 rounded flex-shrink-0"></div>
+                                        )}
                                         <div>
                                             <h4 className="font-bold text-sm">{book.title}</h4>
                                             <p className="text-xs text-slate-500 mb-2">{book.author}</p>
@@ -71,6 +87,36 @@ export function Bookshelf() {
                                                     <span key={starIndex} className={`text-xs ${starIndex < book.rating ? 'text-amber-400' : 'text-slate-300 dark:text-slate-600'}`}>★</span>
                                                 ))}
                                             </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Planning List */}
+                        <div className="lg:col-span-1">
+                            <h3 className="font-mono text-purple-400 mb-6 flex items-center gap-2">
+                                <Bookmark className="w-5 h-5" /> Planning to Read
+                            </h3>
+                            <div className="space-y-4">
+                                {planningBooks.map((book, i) => (
+                                    <div key={i} className="flex items-start gap-4 p-4 rounded hover:bg-white dark:hover:bg-slate-800 transition-colors border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+                                        {book.cover ? (
+                                            <div className="w-12 h-16 rounded overflow-hidden shadow flex-shrink-0">
+                                                <img
+                                                    src={book.cover}
+                                                    alt={book.title}
+                                                    className="w-full h-full object-cover"
+                                                />
+                                            </div>
+                                        ) : (
+                                            <div className="w-12 h-16 bg-slate-200 dark:bg-slate-700 rounded flex-shrink-0 flex items-center justify-center">
+                                                <span className="text-slate-400 text-xs">?</span>
+                                            </div>
+                                        )}
+                                        <div>
+                                            <h4 className="font-bold text-sm">{book.title}</h4>
+                                            <p className="text-xs text-slate-500 mb-2">{book.author}</p>
                                         </div>
                                     </div>
                                 ))}

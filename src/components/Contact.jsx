@@ -19,7 +19,7 @@ export function Contact() {
                     </p>
 
                     <a
-                        href="mailto:hello@example.com"
+                        href="mailto:pratcode07@gmail.com"
                         className="inline-flex items-center gap-2 px-8 py-4 border-2 border-terminal-blue text-terminal-blue font-bold rounded hover:bg-terminal-blue/10 transition-colors"
                     >
                         <Mail className="w-5 h-5" />
@@ -28,12 +28,11 @@ export function Contact() {
 
                     <div className="mt-24 pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col items-center gap-6">
                         <div className="flex gap-6">
-                            <a href="#" className="text-slate-500 hover:text-terminal-blue transition-colors hover:-translate-y-1 transform duration-200"><Github /></a>
-                            <a href="#" className="text-slate-500 hover:text-terminal-blue transition-colors hover:-translate-y-1 transform duration-200"><Linkedin /></a>
-                            <a href="#" className="text-slate-500 hover:text-terminal-blue transition-colors hover:-translate-y-1 transform duration-200"><Twitter /></a>
+                            <a href="https://github.com/prat31" className="text-slate-500 hover:text-terminal-blue transition-colors hover:-translate-y-1 transform duration-200"><Github /></a>
+                            <a href="https://www.linkedin.com/in/prat31/" className="text-slate-500 hover:text-terminal-blue transition-colors hover:-translate-y-1 transform duration-200"><Linkedin /></a>
                         </div>
                         <p className="font-mono text-xs text-slate-500">
-                            Designed & Built by Prat
+                            Designed & Built by Pratyush. 
                         </p>
                     </div>
                 </motion.div>

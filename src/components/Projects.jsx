@@ -3,25 +3,18 @@ import { ExternalLink, Github, Folder } from 'lucide-react';
 
 const projects = [
     {
-        title: "Vibe Projects",
-        description: "A collection of side projects exploring new tech stacks and UI experiments.",
-        tech: ["React", "Vite", "Tailwind"],
-        github: "#",
-        link: "#"
+        title: "mocks-db",
+        description: "Mocks DB is a lightweight, mock MySQL server designed for testing and development. It accepts any standard MySQL connection and query, but instead of storing data, it generates realistic \"junk\" data on the fly based on your provided schema.",
+        tech: ["Python", "click", "faker", "pytest", "twine"],
+        github: "https://github.com/prat31/mocks-db",
+        link: "https://pypi.org/project/mocks-db/"
     },
     {
-        title: "Algorithm Visualizer",
-        description: "Interactive visualization of sorting and pathfinding algorithms.",
-        tech: ["TypeScript", "D3.js"],
-        github: "#",
-        link: "#"
-    },
-    {
-        title: "Smart Home Dashboard",
-        description: "IoT dashboard for monitoring generic home devices using MQTT.",
-        tech: ["Vue", "Node.js", "Socket.io"],
-        github: "#",
-        link: "#"
+        title: "wifi-analyzer",
+        description: "A modern Android application to scan and analyze WiFi networks, built with Jetpack Compose and Material 3.",
+        tech: ["Kotlin", "Jetpack Compose", "Material 3"],
+        github: "https://github.com/prat31/wifi-analyzer",
+        link: "https://github.com/prat31/wifi-analyzer"
     }
 ];
 
@@ -50,8 +43,8 @@ export function Projects() {
                                 <div className="flex justify-between items-start mb-4">
                                     <Folder className="w-10 h-10 text-terminal-blue" />
                                     <div className="flex gap-4">
-                                        <a href={project.github} className="hover:text-terminal-blue transition-colors"><Github className="w-5 h-5" /></a>
-                                        <a href={project.link} className="hover:text-terminal-blue transition-colors"><ExternalLink className="w-5 h-5" /></a>
+                                        <a href={project.github} target="_blank" className="hover:text-terminal-blue transition-colors"><Github className="w-5 h-5" /></a>
+                                        <a href={project.link} target="_blank" className="hover:text-terminal-blue transition-colors"><ExternalLink className="w-5 h-5" /></a>
                                     </div>
                                 </div>
                                 <h3 className="text-xl font-bold mb-2 group-hover:text-terminal-blue transition-colors">{project.title}</h3>
