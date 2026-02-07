@@ -21,7 +21,7 @@ const projects = [
         description: "A visually stunning, static web tool that transforms raw MySQL EXPLAIN JSON into interactive, futuristic flow charts.",
         tech: ["Javascript", "HTML", "CSS"],
         github: "https://github.com/prat31/sql_query_plan_visualizer",
-        link: "https://pypi.org/project/mocks-db/"
+        link: "https://sql-plan-viz.pratcode.dev/"
     },
     {
         title: "wifi-analyzer",
