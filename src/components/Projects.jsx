@@ -3,10 +3,24 @@ import { ExternalLink, Github, Folder } from 'lucide-react';
 
 const projects = [
     {
+        title: "hey-docu",
+        description: "A modern, containerized RAG Chat Application. Upload documents and chat with them using an LLM.",
+        tech: ["Python", "FastAPI", "Qdrant", "Ollama", "JS"],
+        github: "https://github.com/prat31/hey-docu",
+        link: "https://github.com/prat31/hey-docu"
+    },
+    {
         title: "mocks-db",
         description: "Mocks DB is a lightweight, mock MySQL server designed for testing and development. It accepts any standard MySQL connection and query, but instead of storing data, it generates realistic \"junk\" data on the fly based on your provided schema.",
         tech: ["Python", "click", "faker", "pytest", "twine"],
         github: "https://github.com/prat31/mocks-db",
+        link: "https://pypi.org/project/mocks-db/"
+    },
+    {
+        title: "sql-query-plan-visualizer",
+        description: "A visually stunning, static web tool that transforms raw MySQL EXPLAIN JSON into interactive, futuristic flow charts.",
+        tech: ["Javascript", "HTML", "CSS"],
+        github: "https://github.com/prat31/sql_query_plan_visualizer",
         link: "https://pypi.org/project/mocks-db/"
     },
     {
