@@ -3,14 +3,94 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>prat31 | Pratyush Prasad</title>
+  <title>Pratyush Prasad — backend engineer</title>
+  <meta name="description" content="Pratyush Prasad is a backend engineer building async Python services, queues and the systems around them." />
+  <meta property="og:title" content="Pratyush Prasad — backend engineer" />
+  <meta property="og:description" content="Async Python services, the queues between them, and the dashboards that tell you when they're unhappy." />
+  <meta property="og:url" content="https://me.pratcode.dev/" />
+  <meta name="theme-color" content="#ecf2fa" />
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+  <script>
+    // Apply a saved theme before first paint to avoid a flash
+    try { const t = localStorage.getItem('theme'); if (t === 'dark') document.documentElement.dataset.theme = t; } catch (e) { }
+  </script>
 </head>
 
 <body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
+  <!-- Mobile: compact progress bar in place of the rail -->
+  <div class="topbar" aria-hidden="true">
+    <span class="topbar-hop" id="topbar-hop">intro</span>
+    <span class="topbar-track"><span class="topbar-fill" id="topbar-fill"></span></span>
+  </div>
+
+  <div class="wrap">
+    <aside class="rail" aria-label="Sections">
+      <div class="req"><b>Pratyush Prasad</b><br />me.pratcode.dev</div>
+      <nav class="hops" id="hops">
+        <span class="line"></span><span class="fill" id="fill"></span>
+        <a class="hop" href="#intro"><i></i><span><b>intro</b></span></a>
+        <a class="hop" href="#about"><i></i><span><b>about</b></span></a>
+        <a class="hop" href="#projects"><i></i><span><b>projects</b></span></a>
+        <a class="hop" href="#side-quests"><i></i><span><b>side quests</b></span></a>
+        <a class="hop" href="#contact"><i></i><span><b>contact</b></span></a>
+      </nav>
+      <div class="theme">
+        <span>theme:</span>
+        <button class="switch" id="theme" type="button" role="switch" aria-checked="false" aria-label="Dark theme"><span class="knob"></span></button>
+        <span id="theme-state">light</span>
+      </div>
+    </aside>
+
+    <main>
+      <section id="intro" class="hero">
+        <div class="hero-text">
+          <div class="eyebrow" id="role"></div>
+          <h1><span id="name">Pratyush Prasad</span><br /><em id="tagline"></em></h1>
+          <p class="lede" id="lede"></p>
+          <p class="links" id="hero-links"></p>
+        </div>
+        <figure class="hero-art">
+          <img src="/images/intro.png" alt="Armoured knight gripping a sword" width="720" height="647" />
+        </figure>
+      </section>
+
+      <section id="about" class="stage">
+        <header class="stage-head"><h2>About</h2></header>
+        <div class="cols">
+          <div class="prose" id="about-text"></div>
+          <dl class="stack" id="stack" aria-label="Tech stack"></dl>
+        </div>
+      </section>
+
+      <section id="projects" class="stage">
+        <header class="stage-head"><h2>Projects</h2><span id="projects-meta"></span></header>
+        <div class="cards" id="projects-list"></div>
+      </section>
+
+      <section id="side-quests" class="stage">
+        <header class="stage-head"><h2>Side quests</h2><span id="side-quests-meta"></span></header>
+        <table class="result">
+          <thead><tr><th class="c-cover"></th><th>title</th><th class="c-author">author</th><th class="c-status">status</th></tr></thead>
+          <tbody id="books"></tbody>
+        </table>
+      </section>
+
+      <section id="contact" class="stage contact">
+        <header class="stage-head"><h2>Contact</h2></header>
+        <p class="contact-note">Whether you have a question, a project idea, or just want to say hello, drop me an email. Always happy to talk about new opportunities and cool tech.</p>
+        <a class="email" id="email" href="mailto:pratcode07@gmail.com">pratcode07@gmail.com</a>
+        <p class="links" id="contact-links"></p>
+        <footer class="foot">Designed &amp; built by Pratyush.</footer>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
 </body>
 
 </html>

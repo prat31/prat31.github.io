@@ -119,3 +119,5 @@ dist
 # Vite
 dist-ssr
 *.local
+
+.claude/*

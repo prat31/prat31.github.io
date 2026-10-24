@@ -1,30 +1,17 @@
-# Portfolio
+# me.pratcode.dev
 
-Personal portfolio website built with modern web technologies.
+Personal site of Pratyush Prasad: a single page with intro, about, projects, reading and contact, and a progress rail that tracks where you are.
 
-## Tech Stack
+Plain HTML, CSS and JavaScript, bundled with [Vite](https://vitejs.dev/) and deployed to GitHub Pages by `.github/workflows/deploy.yml` on every push to `main`.
 
-- **Framework**: [React](https://react.dev/) + [Vite](https://vitejs.dev/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Animations**: [Framer Motion](https://www.framer.com/motion/)
-- **Icons**: [Lucide React](https://lucide.dev/)
+## Updating content
 
-## Features
-
-- 🌗 Dark/Light Mode
-- 📱 Fully Responsive
-- 🎨 Modern UI with Animations
-- 📚 Bookshelf Section (Currently Reading, Read, Planning)
+All content (bio, stack, projects, books) lives in [`src/data.js`](src/data.js). Book covers go in `public/images/` (about 240px wide JPEGs keep the page light).
 
 ## Development
 
 ```bash
-# Install dependencies
 npm install
-
-# Run development server
 npm run dev
-
-# Build for production
 npm run build
 ```
