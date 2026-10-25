@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pratyush Prasad — backend engineer</title>
-  <meta name="description" content="Pratyush Prasad is a backend engineer building async Python services, queues and the systems around them." />
-  <meta property="og:title" content="Pratyush Prasad — backend engineer" />
+  <title>Pratyush Prasad — software engineer</title>
+  <meta name="description" content="Pratyush Prasad is a software engineer building async Python services, queues and the systems around them." />
+  <meta property="og:title" content="Pratyush Prasad — software engineer" />
   <meta property="og:description" content="Async Python services, the queues between them, and the dashboards that tell you when they're unhappy." />
   <meta property="og:url" content="https://me.pratcode.dev/" />
   <meta name="theme-color" content="#ecf2fa" />
@@ -35,9 +35,8 @@
         <span class="line"></span><span class="fill" id="fill"></span>
         <a class="hop" href="#intro"><i></i><span><b>intro</b></span></a>
         <a class="hop" href="#about"><i></i><span><b>about</b></span></a>
-        <a class="hop" href="#projects"><i></i><span><b>projects</b></span></a>
+        <a class="hop" href="#work"><i></i><span><b>work</b></span></a>
         <a class="hop" href="#side-quests"><i></i><span><b>side quests</b></span></a>
-        <a class="hop" href="#contact"><i></i><span><b>contact</b></span></a>
       </nav>
       <div class="theme">
         <span>theme:</span>
@@ -49,9 +48,9 @@
     <main>
       <section id="intro" class="hero">
         <div class="hero-text">
-          <div class="eyebrow" id="role"></div>
           <h1><span id="name">Pratyush Prasad</span><br /><em id="tagline"></em></h1>
           <p class="lede" id="lede"></p>
+          <dl class="hero-meta" id="hero-meta"></dl>
           <p class="links" id="hero-links"></p>
         </div>
         <figure class="hero-art">
@@ -67,25 +66,44 @@
         </div>
       </section>
 
-      <section id="projects" class="stage">
-        <header class="stage-head"><h2>Projects</h2><span id="projects-meta"></span></header>
-        <div class="cards" id="projects-list"></div>
+      <section id="work" class="stage">
+        <header class="stage-head"><h2>Work</h2></header>
+
+        <div class="quest">
+          <header class="quest-head"><h3>Professional experience</h3></header>
+          <div class="timebar" id="timebar"></div>
+          <div class="roles" id="roles"></div>
+        </div>
+
+        <div class="quest">
+          <header class="quest-head"><h3>Personal projects</h3></header>
+          <div class="cards" id="projects-list"></div>
+        </div>
       </section>
 
       <section id="side-quests" class="stage">
-        <header class="stage-head"><h2>Side quests</h2><span id="side-quests-meta"></span></header>
-        <table class="result">
-          <thead><tr><th class="c-cover"></th><th>title</th><th class="c-author">author</th><th class="c-status">status</th></tr></thead>
-          <tbody id="books"></tbody>
-        </table>
-      </section>
+        <header class="stage-head"><h2>Side quests</h2></header>
 
-      <section id="contact" class="stage contact">
-        <header class="stage-head"><h2>Contact</h2></header>
-        <p class="contact-note">Whether you have a question, a project idea, or just want to say hello, drop me an email. Always happy to talk about new opportunities and cool tech.</p>
-        <a class="email" id="email" href="mailto:pratcode07@gmail.com">pratcode07@gmail.com</a>
-        <p class="links" id="contact-links"></p>
-        <footer class="foot">Designed &amp; built by Pratyush.</footer>
+        <div class="quest">
+          <header class="quest-head"><h3>Bookshelf</h3></header>
+          <div class="shelf" id="shelf"></div>
+        </div>
+
+        <div class="quest">
+          <header class="quest-head"><h3>Projects I am working on</h3></header>
+          <div class="slider">
+            <div class="slider-nav">
+              <button type="button" id="slide-prev" aria-label="Previous project">←</button>
+              <button type="button" id="slide-next" aria-label="Next project">→</button>
+            </div>
+            <div class="slides" id="working-on" tabindex="0" aria-label="Projects I am working on"></div>
+          </div>
+        </div>
+
+        <div class="quest">
+          <header class="quest-head"><h3>My homelab</h3></header>
+          <div class="homelab" id="homelab"></div>
+        </div>
       </section>
     </main>
   </div>

@@ -1,6 +1,6 @@
 // Full-page scrolling on desktop: the first wheel tick moves to the next section
 // straight away, instead of waiting for the gesture (and trackpad momentum) to end
-// the way CSS scroll-snap does.
+// the way CSS scroll-snap does. Sections taller than the screen are stepped through.
 
 const DURATION = 520;
 const QUIET_MS = 140; // wheel silence that marks the end of a gesture
@@ -21,13 +21,6 @@ export function initPaging(sections) {
 
     const enabled = () => media.matches;
     const maxScroll = () => root.scrollHeight - window.innerHeight;
-
-    const currentIndex = () => {
-        const y = window.scrollY + window.innerHeight / 2;
-        let idx = 0;
-        sections.forEach((s, i) => { if (s.offsetTop <= y) idx = i; });
-        return idx;
-    };
 
     function scrollToY(target) {
         target = Math.max(0, Math.min(maxScroll(), target));
@@ -52,20 +45,43 @@ export function initPaging(sections) {
         scrollToY(sections[index].offsetTop);
     }
 
-    // Sections taller than the screen scroll normally until their edge is reached
-    function canScrollWithin(dir) {
-        const sec = sections[currentIndex()];
-        const top = sec.offsetTop;
-        const bottom = top + sec.offsetHeight;
-        if (dir > 0) return bottom > window.scrollY + window.innerHeight + 2;
-        return top < window.scrollY - 2;
+    // Stops: every section's top, plus the bottom edge of sections taller than the
+    // screen. Between a tall section's top and bottom stop it moves a screen at a time.
+    // (a section only a little taller than the screen is treated as fitting)
+    function ranges() {
+        const vh = window.innerHeight;
+        return sections.map((s) => {
+            const overflow = s.offsetHeight - vh;
+            return { top: s.offsetTop, end: overflow > 80 ? s.offsetTop + overflow : s.offsetTop };
+        });
+    }
+
+    function nextTarget(dir) {
+        const y = window.scrollY;
+        const step = window.innerHeight * 0.85;
+        const inTall = ranges().find((r) => r.end > r.top && y >= r.top - 1 && y <= r.end + 1);
+        if (inTall) {
+            if (dir > 0 && y < inTall.end - 1) return Math.min(y + step, inTall.end);
+            if (dir < 0 && y > inTall.top + 1) return Math.max(y - step, inTall.top);
+        }
+        const stops = ranges().flatMap((r) => (r.end > r.top ? [r.top, r.end] : [r.top]));
+        if (dir > 0) return stops.find((p) => p > y + 1) ?? y;
+        return [...stops].reverse().find((p) => p < y - 1) ?? y;
+    }
+
+    // Nearest place to rest: inside a tall section's range, or else the closest stop
+    function settleTarget() {
+        const y = window.scrollY;
+        const rs = ranges();
+        if (rs.some((r) => y >= r.top - 1 && y <= r.end + 1)) return null;
+        const stops = rs.flatMap((r) => [r.top, r.end]);
+        return stops.reduce((best, p) => (Math.abs(p - y) < Math.abs(best - y) ? p : best), stops[0]);
     }
 
     function onWheel(e) {
         if (!enabled() || e.ctrlKey || Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
         const dir = Math.sign(e.deltaY);
         if (!dir) return;
-        if (!animating && !locked && canScrollWithin(dir)) return;
 
         e.preventDefault();
         const now = performance.now();
@@ -81,7 +97,7 @@ export function initPaging(sections) {
 
         if (animating || (locked && !newGesture)) return;
         locked = true;
-        goTo(currentIndex() + dir);
+        scrollToY(nextTarget(dir));
     }
 
     function onKey(e) {
@@ -94,10 +110,10 @@ export function initPaging(sections) {
         if (e.key === ' ') dir = e.shiftKey ? -1 : 1;
         if (e.key === 'Home') { e.preventDefault(); goTo(0); return; }
         if (e.key === 'End') { e.preventDefault(); goTo(sections.length - 1); return; }
-        if (!dir || canScrollWithin(dir)) return;
+        if (!dir) return;
 
         e.preventDefault();
-        if (!animating) goTo(currentIndex() + dir);
+        if (!animating) scrollToY(nextTarget(dir));
     }
 
     // Scrollbar drags and touch scrolling settle onto the nearest section
@@ -106,10 +122,8 @@ export function initPaging(sections) {
         clearTimeout(settleTimer);
         settleTimer = setTimeout(() => {
             if (animating || locked) return;
-            const idx = currentIndex();
-            const sec = sections[idx];
-            const fitsScreen = sec.offsetHeight <= window.innerHeight + 2;
-            if (fitsScreen && Math.abs(window.scrollY - sec.offsetTop) > 1) goTo(idx);
+            const target = settleTarget();
+            if (target !== null) scrollToY(target);
         }, 160);
     }
 
