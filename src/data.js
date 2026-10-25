@@ -11,7 +11,7 @@ export const profile = {
     github: 'prat31', // latest public activity is shown on the intro
     linkedin: {
         url: 'https://www.linkedin.com/in/prat31/',
-        connections: '', // LinkedIn has no public API, so fill this in by hand, e.g. '500+'
+        connections: '3k+'
     },
     resume: 'https://drive.google.com/file/d/1j3wyiRrwdpwDPvHWG9-jeUZ8v3ZNrjPy/view?usp=sharing',
     calendar: 'https://calendar.app.google/74qeEczvdcZ7ce7H9',
@@ -98,6 +98,7 @@ export const projects = [
         source: 'https://github.com/prat31/idoitmyself',
         logo: '/images/projects/idim-light.png',
         logoDark: '/images/projects/idim-dark.png',
+        preview: '/images/projects/idim-demo.png',
     },
     {
         title: 'HealthSight',

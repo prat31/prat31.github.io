@@ -26,13 +26,12 @@ renderHeroLinks($('hero-links'), profile, currentRole);
 // Each "lately" item links to Side quests and highlights what it refers to
 const lately = [
     workingOn[0] && `<a href="#side-quests" data-highlight="slide">Building ${esc(workingOn[0].title)}</a>`,
-    bookshelf.reading && `<a href="#side-quests" data-highlight="reading">Reading ${esc(bookshelf.reading.title)}</a>`,
 ].filter(Boolean).join(' · ');
 $('hero-meta').innerHTML = [
     currentRole && `<dt>now</dt><dd>${esc(currentRole.role)} at ${esc(currentRole.company)}</dd>`,
     `<dt>local</dt><dd>${esc(profile.location)} · <span id="local-time"></span></dd>`,
     lately && `<dt>lately</dt><dd>${lately}</dd>`,
-    `<dt class="gh-row" hidden>github</dt><dd class="gh-row" id="gh-activity" hidden></dd>`,
+    `<dt class="gh-row" hidden>activity</dt><dd class="gh-row" id="gh-activity" hidden></dd>`,
 ].filter(Boolean).join('');
 
 const timeFormat = new Intl.DateTimeFormat('en', { hour: 'numeric', minute: '2-digit', timeZone: profile.timezone });
