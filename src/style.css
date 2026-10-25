@@ -677,8 +677,9 @@ main > section { position: relative; }
   .topbar-track { flex: 1; height: 1px; background: var(--line); }
   .topbar-fill { display: block; width: 0; height: 100%; background: var(--accent); }
 
-  .hero { min-height: 0; padding: 48px 0 72px; grid-template-columns: minmax(0, 1fr); gap: 40px; }
-  .hero-art { width: min(100%, 320px); margin: 0 auto; }
+  .hero { min-height: 0; padding: 48px 0 72px; grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .hero-art { order: -1; width: 140px; margin: 0; }
+  .hero-text h1 { margin-top: 0; }
   .lede { font-size: 19px; }
   .stage { padding: 32px 0 80px; }
   .stage-head { margin-bottom: 28px; }
