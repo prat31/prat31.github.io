@@ -130,6 +130,15 @@ export const projects = [
         logo: '/images/projects/fasthld-light.png',
         logoDark: '/images/projects/fasthld-dark.png',
     },
+    {
+        title: 'kindle-ai-tracker',
+        summary: 'A jailbroken Kindle as a desk display for AI plan usage.',
+        description: 'Shows usage, limits and resets for Claude, ChatGPT, GitHub Copilot, OpenRouter and Z.ai on the Kindle\'s e-ink screen, refreshing every 5 minutes. Sign in by scanning QR codes from your phone; tap to refresh, swipe to switch services.',
+        tech: ['Go', 'FBInk', 'Shell', 'Make'],
+        source: 'https://github.com/prat31/kindle-ai-tracker',
+        preview: '/images/projects/kindle-ai-tracker-demo.gif',
+        logo: '/images/projects/kindle-ai-tracker.svg',
+    },
 ];
 
 // Side quests → Bookshelf: always exactly three books, one per slot.

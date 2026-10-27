@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="18 98 476 316" width="476" height="316">
+  <title>kindle-ai-tracker</title>
+  <!-- Kindle lying on its side, with the wider bezel on the right -->
+  <!-- the paper-coloured outline vanishes on light pages and keeps the edge visible on dark ones -->
+  <rect x="24" y="104" width="464" height="304" rx="52" fill="#1d1d1f" stroke="#f3efe6" stroke-width="5"/>
+  <rect x="58" y="138" width="340" height="236" rx="10" fill="#f3efe6"/>
+  <!-- usage curve -->
+  <path d="M88 282 L130 282 L152 240 L196 230 L216 282 L246 282 L270 198 L310 178 L330 282 L368 282"
+        fill="none" stroke="#1d1d1f" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- the dashboard's usage bar, with the elapsed-time marker -->
+  <rect x="88" y="318" width="280" height="28" rx="14" fill="none" stroke="#1d1d1f" stroke-width="7"/>
+  <rect x="88" y="318" width="168" height="28" rx="14" fill="#1d1d1f"/>
+  <rect x="294" y="306" width="14" height="52" rx="4" fill="#f3efe6"/>
+  <rect x="298" y="306" width="6" height="52" rx="3" fill="#1d1d1f"/>
+</svg>
