@@ -1,4 +1,4 @@
-import { profile, about, stack, career, projects, bookshelf, workingOn, homelab } from './data.js';
+import { profile, about, stack, career, projects, bookshelf, workingOn, homelab, now as nowProject } from './data.js';
 import { initPaging } from './paging.js';
 import { renderHeroLinks } from './linkcards.js';
 
@@ -20,17 +20,12 @@ document.addEventListener('click', (e) => {
 $('name').textContent = profile.name;
 $('tagline').textContent = profile.tagline;
 $('lede').textContent = profile.lede;
-// Intro details: current role, local time, what I'm up to, latest GitHub activity
+// Intro details: current role, local time, latest GitHub activity
 const currentRole = career.find((r) => !r.end);
 renderHeroLinks($('hero-links'), profile, currentRole);
-// Each "lately" item links to Side quests and highlights what it refers to
-const lately = [
-    workingOn[0] && `<a href="#side-quests" data-highlight="slide">Building ${esc(workingOn[0].title)}</a>`,
-].filter(Boolean).join(' · ');
 $('hero-meta').innerHTML = [
     currentRole && `<dt>now</dt><dd>${esc(currentRole.role)} at ${esc(currentRole.company)}</dd>`,
     `<dt>local</dt><dd>${esc(profile.location)} · <span id="local-time"></span></dd>`,
-    lately && `<dt>lately</dt><dd>${lately}</dd>`,
     `<dt class="gh-row" hidden>activity</dt><dd class="gh-row" id="gh-activity" hidden></dd>`,
 ].filter(Boolean).join('');
 
@@ -252,26 +247,6 @@ slides.addEventListener('scroll', updateSlideNav, { passive: true });
 window.addEventListener('resize', updateSlideNav);
 updateSlideNav();
 
-// Intro "lately" links: after the jump to Side quests, flash the item they refer to
-$('hero-meta').addEventListener('click', (e) => {
-    const link = e.target.closest('[data-highlight]');
-    if (!link) return;
-    let target;
-    if (link.dataset.highlight === 'slide') {
-        target = slides.firstElementChild;
-        slides.scrollTo({ left: 0 });
-    } else {
-        target = document.querySelector('.book-reading');
-    }
-    if (!target) return;
-    target.classList.remove('flash');
-    setTimeout(() => {
-        void target.offsetWidth; // restart the animation if it's clicked again
-        target.classList.add('flash');
-        setTimeout(() => target.classList.remove('flash'), 2600);
-    }, 550);
-});
-
 window.addEventListener('keydown', (e) => {
     if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
     if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
@@ -280,6 +255,25 @@ window.addEventListener('keydown', (e) => {
     e.preventDefault();
     slideBy(e.key === 'ArrowRight' ? 1 : -1);
 });
+
+// ---------- intro: what I'm building now ----------
+
+// The dashboard screenshot doubles as the link to the live demo
+$('hero-now').innerHTML = `
+    <div class="hero-now-copy">
+        <div class="hero-now-brand">
+            ${logoImg(nowProject, nowProject.logo, nowProject.logoDark ? 'logo-light' : '')}
+            ${nowProject.logoDark ? logoImg(nowProject, nowProject.logoDark, 'logo-dark') : ''}
+        </div>
+        <p class="hero-now-text">${esc(nowProject.what)}</p>
+        <p class="hero-now-links">${nowProject.links.map((l) => `
+            <a href="${esc(l.href)}"${ext(l.href)}>${l.icon ? icon(l.icon) : ''}<span>${esc(l.label)} ↗</span></a>`).join('')}
+        </p>
+    </div>
+    <a class="hero-now-shot" href="${esc(nowProject.shot.href)}"${ext(nowProject.shot.href)}>
+        <span class="hero-now-shot-bar" aria-hidden="true"><i></i><i></i><i></i><span>${esc(nowProject.shot.host)}</span></span>
+        <img src="${esc(nowProject.shot.src)}" alt="${esc(nowProject.shot.alt)}" loading="lazy" width="1800" height="934" />
+    </a>`;
 
 // ---------- scroll: rail progress ----------
 

@@ -19,6 +19,26 @@ export const profile = {
     calendarEmbed: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3Msp_yCSWnkowCDKp_Xe5lXE73RESIavnbu3zMYwuP992sD-u1kH24dn5l84gJ4U_ATZrBu0Oy?gv=true',
 };
 
+// Intro → lower half: the project I'm spending my time on right now.
+export const now = {
+    title: 'IDIM',
+    logo: '/images/projects/idim-light.png',
+    logoDark: '/images/projects/idim-dark.png',
+    logoHeight: 28,
+    what: "I'm building IDIM: a self-hosted mailbox that labels email by the rules I write, then turns bills and receipts into dashboards. Your inbox, your rules, your data.",
+    links: [
+        { label: 'Live demo', href: 'https://idoitmyself.online/demo/' },
+        { label: 'Website', href: 'https://idoitmyself.online' },
+        { label: 'Source', href: 'https://github.com/prat31/idoitmyself', icon: 'github' },
+    ],
+    shot: {
+        href: 'https://idoitmyself.online/demo/',
+        src: '/images/projects/idim-demo.png',
+        alt: 'IDIM dashboard: emails scanned, live scan status, emails over time and breakdowns by label, filter and sender',
+        host: 'idoitmyself.online/demo',
+    },
+};
+
 export const about = [
     "I build systems that scale, stay alive under pressure, and generally behave better than my sleep schedule. Most of my time goes into Python, FastAPI, AsyncIO and Celery. If it involves queues, schedulers, worker pools or weird race conditions, I'm probably already tinkering with it.",
     "I like orchestrating services with Docker and Kubernetes, wiring pipelines together with RabbitMQ, Redis and Trino, and making Prometheus and Grafana dashboards look cooler than they need to. I care about performance, clean APIs, and making systems faster, safer and more predictable.",
